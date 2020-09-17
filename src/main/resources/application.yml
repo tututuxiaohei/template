@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: template
+  datasource:
+    dynamic:
+      primary: master #设置默认的数据源或者数据源组,默认值即为master
+      strict: false #设置严格模式,默认false不启动. 启动后在未匹配到指定数据源时候会抛出异常,不启动则使用默认数据源.
+      datasource:
+        master:
+          url: jdbc:mysql://172.26.130.3:5301/template?useSSL=false
+          username: sealAdmin
+          password: Seal@Ucan@1
+          driver-class-name: com.mysql.jdbc.Driver # 3.2.0开始支持SPI可省略此配置
+        slave_1:
+          url: jdbc:mysql://172.26.130.5:5301/template?useSSL=false
+          username: sealAdmin
+          password: Seal@Ucan@1
+          driver-class-name: com.mysql.jdbc.Driver
+        slave_2:
+          url: jdbc:mysql://172.26.130.5:5301/template?useSSL=false
+          username: sealAdmin
+          password: Seal@Ucan@1
+          driver-class-name: com.mysql.jdbc.Driver
+
+server:
+  port: 9000
+
+
+#mybatis日志
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
